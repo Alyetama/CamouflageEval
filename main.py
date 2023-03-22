@@ -3,6 +3,7 @@
 
 import copy
 import json
+import sys
 import warnings
 from pathlib import Path, PurePath
 
@@ -134,7 +135,8 @@ def run(predictor, img_path, crop_pixels=70):
 
 if __name__ == '__main__':
     Path('tmp').mkdir(exist_ok=True)
-    imgs = list(Path("Coat_Color_Change_pics").rglob("*.JPG"))
+    input_folder = sys.argv[1]
+    imgs = list(Path(input_folder).rglob("*.JPG"))
 
     predictor = load_model()
     scores = {}
